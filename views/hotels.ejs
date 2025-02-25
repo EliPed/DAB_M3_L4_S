@@ -25,7 +25,9 @@
                   <%=hotel.Location%>
                 </span>
             </span>
+            <% if(user) {%>
             <a href="/rooms/<%=hotel.id%>" class="col btn btn-success me-1"> Rent a room</a>
+            <% }; %>
             <a href="/hotels/<%=hotel.id%>" class="col btn btn-warning me-1"> Details</a>
           </div>
           <% }); %>
@@ -33,6 +35,7 @@
     </div>
     <hr>
     <%-include('./partials/footer.ejs')%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
