@@ -12,13 +12,16 @@ const { use } = require('passport');
 router.get('/:hotelId', async function(req, res, next) {
   const rooms =  await roomService.getHotelRooms(req.params.hotelId);
   const userId = req.user?.id ?? 0;
-  res.render('rooms', { rooms: rooms, userId, user: req.user });
+  const isAdmin = req.user?.role === 'Admin';
+  res.render('rooms', { rooms: rooms, userId, user: req.user, isAdmin });
 });
 
 router.get('/', async function(req, res, next) {
     const rooms = await roomService.get();
     const userId = req.user?.id ?? 0;
-    res.render('rooms', { rooms: rooms, userId, user: req.user });  
+    const username = req.user?.username ?? 0;
+    const isAdmin = req.user?.role === 'Admin';
+    res.render('rooms', { rooms: rooms, userId, user: req.user, username, isAdmin });  
 });
 
 router.post('/', checkIfAuthorized, jsonParser, async function(req, res, next) {
