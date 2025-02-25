@@ -11,6 +11,7 @@ const connection = {
   dialect: process.env.DIALECT,
   dialectmodel: process.env.DIALECTMODEL,
 };
+
 const sequelize = new Sequelize(connection);
 const db = {}
 db.sequelize = sequelize
